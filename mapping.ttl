@@ -11,7 +11,7 @@
 <TriplesMap1> a rr:TriplesMap;
     
   rml:logicalSource [
-    rml:source "data/test.csv";
+    rml:source "data/ammo.csv";
     rml:referenceFormulation ql:CSV
   ];
 
@@ -29,7 +29,27 @@
 
   rr:predicateObjectMap [ 
     rr:predicate :coo1980_code; 
-    rr:objectMap [ rr:template "http://ldf.fi/ammo/coo1980/{ammattiluokitusryhmä Suomi 1980}"]
+    rr:objectMap [ rr:template "http://ldf.fi/coo1980/{ammattiluokitusryhmä Suomi 1980}"]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate :hisco_code; 
+    rr:objectMap [ rr:template "http://ldf.fi/hisco/{HISCO}"]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate :hisco_relation; 
+    rr:objectMap [ rr:template "http://ldf.fi/hisco/relation/{RELATION}"]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate :hisco_status; 
+    rr:objectMap [ rr:template "http://ldf.fi/hisco/status/{STATUS}"]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate :hisco_product; 
+    rr:objectMap [ rr:template "http://ldf.fi/hisco/product/{PRODUCT}"]
   ];
 
   .
