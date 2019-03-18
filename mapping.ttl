@@ -1,0 +1,36 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix : <http://ldf.fi/ammo/> .
+
+@base <http://example.com/base/> .
+
+<TriplesMap1> a rr:TriplesMap;
+    
+  rml:logicalSource [
+    rml:source "data/test.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [ rml:reference "uri"; rr:termType rr:IRI; ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate skos:prefLabel; 
+    rr:objectMap [ rml:reference "main_name" ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate skos:altLabel; 
+    rr:objectMap [ rml:reference "secondary_name" ]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate :coo1980_code; 
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/coo1980/{ammattiluokitusryhmä Suomi 1980}"]
+  ];
+
+  .
+
