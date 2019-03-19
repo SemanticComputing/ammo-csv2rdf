@@ -1,3 +1,4 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
@@ -16,6 +17,11 @@
   ];
 
   rr:subjectMap [ rml:reference "uri"; rr:termType rr:IRI; ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate rdf:type; 
+    rr:object :Occupation ;
+  ];
 
   rr:predicateObjectMap [ 
     rr:predicate skos:prefLabel; 
@@ -50,6 +56,16 @@
   rr:predicateObjectMap [ 
     rr:predicate :hisco_product; 
     rr:objectMap [ rr:template "http://ldf.fi/hisco/product/{PRODUCT}"]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate :hisclass; 
+    rr:objectMap [ rr:template "http://ldf.fi/hisco/hisclass/{HISCLASS 2}"]
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate :related; 
+    rr:objectMap [ rml:reference "KOKO_concept"]
   ];
 
   .
