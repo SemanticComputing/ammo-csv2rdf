@@ -16,7 +16,7 @@
     rml:referenceFormulation ql:CSV
   ];
 
-  rr:subjectMap [ rml:reference "uri"; rr:termType rr:IRI; ];
+  rr:subjectMap [ rr:template "http://ldf.fi/ammo/{uri}"; rr:termType rr:IRI; ];
 
   rr:predicateObjectMap [ 
     rr:predicate rdf:type; 
@@ -35,7 +35,7 @@
 
   rr:predicateObjectMap [ 
     rr:predicate :coo1980_code; 
-    rr:objectMap [ rr:template "http://ldf.fi/coo1980/{ammattiluokitusryhmä Suomi 1980}"]
+    rr:objectMap [ rr:template "http://ldf.fi/coo1980/{111}"]
   ];
 
   rr:predicateObjectMap [ 
@@ -68,5 +68,28 @@
     rr:objectMap [ rml:reference "KOKO_concept"]
   ];
 
+  rr:predicateObjectMap [ 
+    rr:predicate :related; 
+    rr:objectMap [
+      rr:parentTriplesMap <TriplesMap2> ;
+      rr:joinCondition [
+        rr:child "onko_arvo O oppiarvo A arvonimi S sotilasarvo R rooli Sosioekonominen SE" ;
+        rr:parent "abbreviation" ;
+      ];
+    ];
+  ];
+
   .
+
+<TriplesMap2> a rr:TriplesMap;
+    
+  rml:logicalSource [
+    rml:source "input/classes.csv";
+    rml:referenceFormulation ql:CSV ;
+  ];
+
+  rr:subjectMap [ rml:reference "uri" ];
+
+  .
+
 

@@ -6,7 +6,7 @@ Usage:
 
 ```
 # Remove whitespace once
-sed -i -r "s/^\ +//g" data/ammo.csv
+sed -i -r "s/^\ +//g" data/ammo.csv &&
 sed -i -r "s/\ *,\ */,/g" data/ammo.csv
 
 # Run the RML conversion
