@@ -3,6 +3,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix sd : <http://www.w3.org/ns/sparql-service-description#> .
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix : <http://ldf.fi/ammo/> .
@@ -17,11 +18,6 @@
   ];
 
   rr:subjectMap [ rr:template "http://ldf.fi/ammo/{uri}"; rr:termType rr:IRI; ];
-
-  rr:predicateObjectMap [ 
-    rr:predicate rdf:type; 
-    rr:object :Occupation ;
-  ];
 
   rr:predicateObjectMap [ 
     rr:predicate skos:prefLabel; 
@@ -63,13 +59,13 @@
     rr:objectMap [ rr:template "http://ldf.fi/hisco/hisclass/{HISCLASS 2}"]
   ];
 
-  rr:predicateObjectMap [ 
-    rr:predicate :related; 
-    rr:objectMap [ rml:reference "KOKO_concept"]
-  ];
+  #rr:predicateObjectMap [ 
+  #  rr:predicate :related; 
+  #  rr:objectMap [ rml:reference "KOKO_concept"]
+  #];
 
   rr:predicateObjectMap [ 
-    rr:predicate :related; 
+    rr:predicate rdf:type ; 
     rr:objectMap [
       rr:parentTriplesMap <TriplesMap2> ;
       rr:joinCondition [
@@ -79,7 +75,30 @@
     ];
   ];
 
+  rr:predicateObjectMap [ 
+    rr:predicate skos:related ; 
+    rr:objectMap [
+      rr:parentTriplesMap <TriplesMapFinto> ;
+      rr:joinCondition [
+        rr:child "KOKO_concept" ;
+        rr:parent "name.value" ;
+      ];
+    ];
+  ];
+
+  rr:predicateObjectMap [ 
+    rr:predicate skos:related ; 
+    rr:objectMap [
+      rr:parentTriplesMap <TriplesMapFinto> ;
+      rr:joinCondition [
+        rr:child "KOKO_concept" ;
+        rr:parent "uri.value" ;
+      ];
+    ];
+  ];
+
   .
+
 
 <TriplesMap2> a rr:TriplesMap;
     
@@ -89,7 +108,28 @@
   ];
 
   rr:subjectMap [ rml:reference "uri" ];
-
   .
 
+
+<#SPARQL_Finto_source> a sd:Service ;
+    sd:endpoint <http://api.finto.fi/sparql> ;
+    sd:supportedLanguage sd:SPARQL11Query ;
+    sd:resultFormat <http://www.w3.org/ns/formats/SPARQL_Results_JSON> ;
+  .
+
+<TriplesMapFinto> rml:logicalSource [     
+    rml:source <#SPARQL_Finto_source> ;
+    rml:referenceFormulation ql:JSONPath ;
+    rml:iterator "$.results.bindings[*]" ;
+    rml:query """
+SELECT ?uri ?name FROM <http://www.yso.fi/onto/koko/> 
+WHERE {
+  OPTIONAL { ?uri <http://www.w3.org/2004/02/skos/core#prefLabel> ?name_ . }
+  BIND(STR(?name_) as ?name)
+}
+""";
+
+  ];
+  rr:subjectMap [ rml:reference "uri.value" ];
+  .
 
