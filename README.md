@@ -2,13 +2,16 @@
 
 Requires [rmlmapper-java](https://github.com/RMLio/rmlmapper-java).
 
-Usage:
+Add `rml` as an alias to `java -jar rmlmapper-4.3.2-r92.jar`, with the correct path to the JAR file. 
 
+Preprocess the data:
 ```
 # Remove whitespace once
 sed -i -r "s/^\ +//g" data/ammo.csv &&
 sed -i -r "s/\ *,\ */,/g" data/ammo.csv
+```
 
-# Run the RML conversion
-java -jar rmlmapper-4.3.2-r92.jar -m mapping.ttl -o ammo.ttl
+Run the conversion:
+```
+./process.sh
 ```

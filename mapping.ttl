@@ -11,7 +11,7 @@
 @base <http://example.com/base/> .
 
 <TriplesMap1> a rr:TriplesMap;
-    
+
   rml:logicalSource [
     rml:source "data/ammo.csv";
     rml:referenceFormulation ql:CSV
@@ -19,64 +19,59 @@
 
   rr:subjectMap [ rr:template "http://ldf.fi/ammo/{uri}"; rr:termType rr:IRI; ];
 
-  rr:predicateObjectMap [ 
-    rr:predicate skos:prefLabel; 
+  rr:predicateObjectMap [
+    rr:predicate skos:prefLabel;
     rr:objectMap [ rml:reference "main_name" ]
   ];
 
-  rr:predicateObjectMap [ 
-    rr:predicate skos:altLabel; 
+  rr:predicateObjectMap [
+    rr:predicate skos:altLabel;
     rr:objectMap [ rml:reference "secondary_name" ]
   ];
 
-  rr:predicateObjectMap [ 
-    rr:predicate :coo1980_code; 
-    rr:objectMap [ rr:template "http://ldf.fi/coo1980/{111}"]
+  rr:predicateObjectMap [
+    rr:predicate :coo1980_code;
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/coo1980#{111}"]
   ];
 
-  rr:predicateObjectMap [ 
-    rr:predicate :hisco_code; 
+  rr:predicateObjectMap [
+    rr:predicate :hisco_code;
     rr:objectMap [ rr:template "http://ldf.fi/hisco/{HISCO}"]
   ];
 
-  rr:predicateObjectMap [ 
-    rr:predicate :hisco_relation; 
+  rr:predicateObjectMap [
+    rr:predicate :hisco_relation;
     rr:objectMap [ rr:template "http://ldf.fi/hisco/relation/{RELATION}"]
   ];
 
-  rr:predicateObjectMap [ 
-    rr:predicate :hisco_status; 
+  rr:predicateObjectMap [
+    rr:predicate :hisco_status;
     rr:objectMap [ rr:template "http://ldf.fi/hisco/status/{STATUS}"]
   ];
 
-  rr:predicateObjectMap [ 
-    rr:predicate :hisco_product; 
+  rr:predicateObjectMap [
+    rr:predicate :hisco_product;
     rr:objectMap [ rr:template "http://ldf.fi/hisco/product/{PRODUCT}"]
   ];
 
-  rr:predicateObjectMap [ 
-    rr:predicate :hisclass; 
+  rr:predicateObjectMap [
+    rr:predicate :hisclass;
     rr:objectMap [ rr:template "http://ldf.fi/hisco/hisclass/{HISCLASS 2}"]
   ];
 
-  #rr:predicateObjectMap [ 
-  #  rr:predicate :related; 
-  #  rr:objectMap [ rml:reference "KOKO_concept"]
-  #];
-
-  rr:predicateObjectMap [ 
-    rr:predicate rdf:type ; 
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
     rr:objectMap [
       rr:parentTriplesMap <TriplesMap2> ;
       rr:joinCondition [
-        rr:child "onko_arvo O oppiarvo A arvonimi S sotilasarvo R rooli Sosioekonominen SE" ;
+        rr:child "onko_arvo O oppiarvo A arvonimi S sotilasarvo R rooli" ;
         rr:parent "abbreviation" ;
       ];
     ];
   ];
 
-  rr:predicateObjectMap [ 
-    rr:predicate skos:related ; 
+  rr:predicateObjectMap [
+    rr:predicate skos:related ;
     rr:objectMap [
       rr:parentTriplesMap <TriplesMapFinto> ;
       rr:joinCondition [
@@ -86,8 +81,8 @@
     ];
   ];
 
-  rr:predicateObjectMap [ 
-    rr:predicate skos:related ; 
+  rr:predicateObjectMap [
+    rr:predicate skos:related ;
     rr:objectMap [
       rr:parentTriplesMap <TriplesMapFinto> ;
       rr:joinCondition [
@@ -101,7 +96,7 @@
 
 
 <TriplesMap2> a rr:TriplesMap;
-    
+
   rml:logicalSource [
     rml:source "input/classes.csv";
     rml:referenceFormulation ql:CSV ;
@@ -117,12 +112,12 @@
     sd:resultFormat <http://www.w3.org/ns/formats/SPARQL_Results_JSON> ;
   .
 
-<TriplesMapFinto> rml:logicalSource [     
+<TriplesMapFinto> rml:logicalSource [
     rml:source <#SPARQL_Finto_source> ;
     rml:referenceFormulation ql:JSONPath ;
     rml:iterator "$.results.bindings[*]" ;
     rml:query """
-SELECT ?uri ?name FROM <http://www.yso.fi/onto/koko/> 
+SELECT ?uri ?name FROM <http://www.yso.fi/onto/koko/>
 WHERE {
   OPTIONAL { ?uri <http://www.w3.org/2004/02/skos/core#prefLabel> ?name_ . }
   BIND(STR(?name_) as ?name)
@@ -132,4 +127,3 @@ WHERE {
   ];
   rr:subjectMap [ rml:reference "uri.value" ];
   .
-
