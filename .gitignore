@@ -1,4 +1,6 @@
 data
 output
-*.swp
 .idea
+
+*.swp
+*.log
