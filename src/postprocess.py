@@ -63,6 +63,7 @@ def main():
         print('Removing empty altLabels')
         g = remove_empty_literals(g, SKOS.altLabel)
 
+    g.bind('skos', SKOS)
     g.serialize(args.output, format=guess_format(args.output))
 
 

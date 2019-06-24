@@ -163,7 +163,7 @@
   ];
 
   rr:subjectMap [
-    rr:template "http://ldf.fi/ammo/hisco/status_{status_id}";
+    rr:template "http://ldf.fi/ammo/hisco/status/{status_id}";
     rr:termType rr:IRI;
     rr:class skos:Concept
   ];
@@ -183,7 +183,7 @@
   ];
 
   rr:subjectMap [
-    rr:template "http://ldf.fi/ammo/hisco/relation_{relation_id}";
+    rr:template "http://ldf.fi/ammo/hisco/relation/{relation_id}";
     rr:termType rr:IRI;
     rr:class skos:Concept
   ];
@@ -204,7 +204,7 @@
   ];
 
   rr:subjectMap [
-    rr:template "http://ldf.fi/ammo/hisco/product_{product_id}";
+    rr:template "http://ldf.fi/ammo/hisco/product/{product_id}";
     rr:termType rr:IRI;
     rr:class skos:Concept
   ];

@@ -36,27 +36,27 @@
 
   rr:predicateObjectMap [
     rr:predicate :hisco_code;
-    rr:objectMap [ rr:template "http://ldf.fi/hisco/{HISCO}"]
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/{HISCO}"]
   ];
 
   rr:predicateObjectMap [
     rr:predicate :hisco_relation;
-    rr:objectMap [ rr:template "http://ldf.fi/hisco/relation/{RELATION}"]
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/relation/{RELATION}"]
   ];
 
   rr:predicateObjectMap [
     rr:predicate :hisco_status;
-    rr:objectMap [ rr:template "http://ldf.fi/hisco/status/{STATUS}"]
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/status/{STATUS}"]
   ];
 
   rr:predicateObjectMap [
     rr:predicate :hisco_product;
-    rr:objectMap [ rr:template "http://ldf.fi/hisco/product/{PRODUCT}"]
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/product/{PRODUCT}"]
   ];
 
   rr:predicateObjectMap [
     rr:predicate :hisclass;
-    rr:objectMap [ rr:template "http://ldf.fi/hisco/hisclass/{HISCLASS 2}"]
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass/{HISCLASS 2}"]
   ];
 
   rr:predicateObjectMap [
