@@ -1,0 +1,216 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix sd : <http://www.w3.org/ns/sparql-service-description#> .
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix : <http://ldf.fi/ammo/> .
+
+@base <http://ldf.fi/ammo/conversion/> .
+
+<TriplesMap1> a rr:TriplesMap;
+
+  rml:logicalSource [
+    rml:source "data/hisco_1.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [
+    rr:template "http://ldf.fi/ammo/hisco/{hisco_1_id}";
+    rr:termType rr:IRI;
+    rr:class skos:Concept
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:prefLabel;
+    rr:objectMap [ rml:reference "label" ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:note;
+    rr:objectMap [ rml:reference "description" ]
+  ];
+  .
+
+
+<TriplesMap2> a rr:TriplesMap;
+
+  rml:logicalSource [
+    rml:source "data/hisco_2.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [
+    rr:template "http://ldf.fi/ammo/hisco/{hisco_1_id}{hisco_2_id}";
+    rr:termType rr:IRI;
+    rr:class skos:Concept
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:prefLabel;
+    rr:objectMap [ rml:reference "label" ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:broader;
+    rr:objectMap [
+      rr:parentTriplesMap <TriplesMap1>;
+      rr:joinCondition [
+        rr:child "hisco_1_id";
+        rr:parent "hisco_1_id";
+      ];
+    ];
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:note;
+    rr:objectMap [ rml:reference "description" ]
+  ];
+  .
+
+
+<TriplesMap3> a rr:TriplesMap;
+
+  rml:logicalSource [
+    rml:source "data/hisco_3.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [
+    rr:template "http://ldf.fi/ammo/hisco/{hisco_1_id}{hisco_2_id}{hisco_3_id}";
+    rr:termType rr:IRI;
+    rr:class skos:Concept
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:prefLabel;
+    rr:objectMap [ rml:reference "label" ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:broader;
+    rr:objectMap [
+      rr:parentTriplesMap <TriplesMap2>;
+      rr:joinCondition [
+        rr:child "hisco_1_id";
+        rr:parent "hisco_1_id";
+      ];
+      rr:joinCondition [
+        rr:child "hisco_2_id";
+        rr:parent "hisco_2_id";
+      ];
+    ];
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:note;
+    rr:objectMap [ rml:reference "description" ]
+  ];
+  .
+
+
+<TriplesMap45> a rr:TriplesMap;
+
+  rml:logicalSource [
+    rml:source "data/hisco_45.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [
+    rr:template "http://ldf.fi/ammo/hisco/{hisco_1_id}{hisco_2_id}{hisco_3_id}{hisco_45_id}";
+    rr:termType rr:IRI;
+    rr:class skos:Concept
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:prefLabel;
+    rr:objectMap [ rml:reference "label" ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:broader;
+    rr:objectMap [
+      rr:parentTriplesMap <TriplesMap2>;
+      rr:joinCondition [
+        rr:child "hisco_1_id";
+        rr:parent "hisco_1_id";
+      ];
+      rr:joinCondition [
+        rr:child "hisco_2_id";
+        rr:parent "hisco_2_id";
+      ];
+      rr:joinCondition [
+        rr:child "hisco_3_id";
+        rr:parent "hisco_3_id";
+      ];
+    ];
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:note;
+    rr:objectMap [ rml:reference "description" ]
+  ];
+  .
+
+
+<TriplesMapStatus> a rr:TriplesMap;
+
+  rml:logicalSource [
+    rml:source "data/hisco_status.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [
+    rr:template "http://ldf.fi/ammo/hisco/status_{status_id}";
+    rr:termType rr:IRI;
+    rr:class skos:Concept
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:prefLabel;
+    rr:objectMap [ rml:reference "label" ]
+  ];
+  .
+
+
+<TriplesMapRelation> a rr:TriplesMap;
+
+  rml:logicalSource [
+    rml:source "data/hisco_relation.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [
+    rr:template "http://ldf.fi/ammo/hisco/relation_{relation_id}";
+    rr:termType rr:IRI;
+    rr:class skos:Concept
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:prefLabel;
+    rr:objectMap [ rml:reference "label" ]
+  ];
+  .
+
+
+
+<TriplesMapProduct> a rr:TriplesMap;
+
+  rml:logicalSource [
+    rml:source "data/hisco_product.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [
+    rr:template "http://ldf.fi/ammo/hisco/product_{product_id}";
+    rr:termType rr:IRI;
+    rr:class skos:Concept
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:prefLabel;
+    rr:objectMap [ rml:reference "label" ]
+  ];
+  .
