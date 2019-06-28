@@ -1,12 +1,12 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix : <http://ldf.fi/ammo/> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix sd : <http://www.w3.org/ns/sparql-service-description#> .
-
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix : <http://ldf.fi/ammo/> .
+@prefix dct: <http://purl.org/dc/terms/> .
 
 @base <http://ldf.fi/ammo/conversion/> .
 
@@ -132,7 +132,7 @@
   rr:predicateObjectMap [
     rr:predicate skos:broader;
     rr:objectMap [
-      rr:parentTriplesMap <TriplesMap2>;
+      rr:parentTriplesMap <TriplesMap3>;
       rr:joinCondition [
         rr:child "hisco_1_id";
         rr:parent "hisco_1_id";

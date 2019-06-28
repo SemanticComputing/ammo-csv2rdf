@@ -3,12 +3,16 @@
 """Postprocess coo1980.ttl"""
 import argparse
 import logging
+import types
 
 from rdflib import Graph, Literal, URIRef
 from rdflib.namespace import SKOS, RDF, Namespace
 from rdflib.util import guess_format
 
 log = logging.getLogger(__name__)
+
+AMMO_HISCO = Namespace('http://ldf.fi/ammo/hisco/')
+AMMO = Namespace('http://ldf.fi/ammo/')
 
 
 def add_coo1980_altlabels(g: Graph):
@@ -34,10 +38,25 @@ def remove_empty_literals(g: Graph, prop: URIRef):
     return g
 
 
+def remove_unused_resources(g: Graph, qualifier: types.FunctionType):
+    log.info('Removing unused resources with qualifier %s' % qualifier)
+
+    for resource in list(g.subjects(None, None)):
+        if not list(g.subject_predicates(resource)) and qualifier(resource):
+            log.debug('Removing resource %s' % resource)
+            g.remove((resource, None, None))
+
+    return g
+
+
+def is_hisco_resource(resource: URIRef):
+    return str(resource).startswith(str(AMMO_HISCO))
+
+
 def main():
     argparser = argparse.ArgumentParser(description=__doc__, fromfile_prefix_chars='@')
 
-    argparser.add_argument("task", help="Task to perform", choices=['add_altlabels', 'remove_empty_literals'],)
+    argparser.add_argument("task", help="Task to perform", choices=['add_altlabels', 'remove_empty_literals', 'remove_unused_hisco'],)
     argparser.add_argument("input", help="Input RDF file")
     argparser.add_argument("output", help="Output RDF file")
     argparser.add_argument("--loglevel", default='DEBUG', help="Logging level",
@@ -56,14 +75,22 @@ def main():
     g.parse(args.input, format=guess_format(args.input))
 
     if args.task == 'add_altlabels':
-        print('Adding altLabels to COO1980')
+        log.info('Adding altLabels to COO1980')
         g = add_coo1980_altlabels(g)
 
     elif args.task == 'remove_empty_literals':
-        print('Removing empty altLabels')
+        log.info('Removing empty altLabels')
         g = remove_empty_literals(g, SKOS.altLabel)
 
+    elif args.task == 'remove_unused_hisco':
+        log.info('Removing unused HISCO resources')
+        g = remove_unused_resources(g, is_hisco_resource)
+        g = remove_unused_resources(g, is_hisco_resource)
+        g = remove_unused_resources(g, is_hisco_resource)
+
     g.bind('skos', SKOS)
+    g.bind('ammo', AMMO)
+    g.bind('hisco', AMMO_HISCO)
     g.serialize(args.output, format=guess_format(args.output))
 
 
