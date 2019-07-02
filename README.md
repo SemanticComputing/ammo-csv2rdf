@@ -11,5 +11,5 @@ sed -i -r "s/\ *,\ */,/g" data/ammo.csv
 
 Run the conversion with environment variable `RML` set:
 ```
-./process.sh
+RML="path to rmlmapper-java" ./process.sh
 ```

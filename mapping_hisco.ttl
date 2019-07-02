@@ -32,6 +32,11 @@
     rr:predicate skos:note;
     rr:objectMap [ rml:reference "description" ]
   ];
+
+  rr:predicateObjectMap [
+    rr:predicate dct:source ;
+    rr:object <http://ldf.fi/ammo/sources/hisco> ;
+  ];
   .
 
 
@@ -67,6 +72,11 @@
   rr:predicateObjectMap [
     rr:predicate skos:note;
     rr:objectMap [ rml:reference "description" ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate dct:source ;
+    rr:object <http://ldf.fi/ammo/sources/hisco> ;
   ];
   .
 
@@ -107,6 +117,11 @@
   rr:predicateObjectMap [
     rr:predicate skos:note;
     rr:objectMap [ rml:reference "description" ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate dct:source ;
+    rr:object <http://ldf.fi/ammo/sources/hisco> ;
   ];
   .
 
@@ -152,6 +167,11 @@
     rr:predicate skos:note;
     rr:objectMap [ rml:reference "description" ]
   ];
+
+  rr:predicateObjectMap [
+    rr:predicate dct:source ;
+    rr:object <http://ldf.fi/ammo/sources/hisco> ;
+  ];
   .
 
 
@@ -171,6 +191,11 @@
   rr:predicateObjectMap [
     rr:predicate skos:prefLabel;
     rr:objectMap [ rml:reference "label" ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate dct:source ;
+    rr:object <http://ldf.fi/ammo/sources/hisco> ;
   ];
   .
 
@@ -192,6 +217,11 @@
     rr:predicate skos:prefLabel;
     rr:objectMap [ rml:reference "label" ]
   ];
+
+  rr:predicateObjectMap [
+    rr:predicate dct:source ;
+    rr:object <http://ldf.fi/ammo/sources/hisco> ;
+  ];
   .
 
 
@@ -212,5 +242,10 @@
   rr:predicateObjectMap [
     rr:predicate skos:prefLabel;
     rr:objectMap [ rml:reference "label" ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate dct:source ;
+    rr:object <http://ldf.fi/ammo/sources/hisco> ;
   ];
   .

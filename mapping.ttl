@@ -56,7 +56,12 @@
 
   rr:predicateObjectMap [
     rr:predicate :hisclass;
-    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass/{HISCLASS 2}"]
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass12/{HISCLASS 2}"]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:object skos:Concept ;
   ];
 
   rr:predicateObjectMap [
