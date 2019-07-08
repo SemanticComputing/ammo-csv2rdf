@@ -15,7 +15,7 @@ python src/postprocess.py add_altlabels data/coo1980.ttl output/coo1980.ttl --lo
 python src/postprocess.py remove_empty_literals output/_ammo.ttl output/_ammo_2.ttl --logfile output/logs/postprocess.log
 cat output/_ammo_2.ttl output/coo1980.ttl output/_hisco.ttl | rapper - "http://ldf.fi/ammo/" -i turtle -o turtle > output/_ammo_combined.ttl
 
-python src/postprocess.py add_en_labels output/_ammo_combined.ttl output/_ammo_combined_2.ttl --logfile output/logs/postprocess.log
-python src/postprocess.py remove_unused_hisco output/_ammo_combined_2.ttl output/_ammo_.ttl --logfile output/logs/postprocess.log
+# python src/postprocess.py add_en_labels output/_ammo_combined.ttl output/_ammo_combined_2.ttl --logfile output/logs/postprocess.log
+python src/postprocess.py remove_unused_hisco output/_ammo_combined.ttl output/_ammo_.ttl --logfile output/logs/postprocess.log
 
 rapper -i turtle -o turtle output/_ammo_.ttl > output/ammo.ttl
