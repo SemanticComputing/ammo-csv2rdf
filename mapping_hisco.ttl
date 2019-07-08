@@ -25,12 +25,12 @@
 
   rr:predicateObjectMap [
     rr:predicate skos:prefLabel;
-    rr:objectMap [ rml:reference "label" ]
+    rr:objectMap [ rml:reference "label"; rr:language "en" ]
   ];
 
   rr:predicateObjectMap [
     rr:predicate skos:note;
-    rr:objectMap [ rml:reference "description" ]
+    rr:objectMap [ rml:reference "description"; rr:language "en" ]
   ];
 
   rr:predicateObjectMap [
@@ -55,7 +55,7 @@
 
   rr:predicateObjectMap [
     rr:predicate skos:prefLabel;
-    rr:objectMap [ rml:reference "label" ]
+    rr:objectMap [ rml:reference "label"; rr:language "en" ]
   ];
 
   rr:predicateObjectMap [
@@ -71,7 +71,7 @@
 
   rr:predicateObjectMap [
     rr:predicate skos:note;
-    rr:objectMap [ rml:reference "description" ]
+    rr:objectMap [ rml:reference "description"; rr:language "en" ]
   ];
 
   rr:predicateObjectMap [
@@ -96,7 +96,7 @@
 
   rr:predicateObjectMap [
     rr:predicate skos:prefLabel;
-    rr:objectMap [ rml:reference "label" ]
+    rr:objectMap [ rml:reference "label"; rr:language "en" ]
   ];
 
   rr:predicateObjectMap [
@@ -116,7 +116,7 @@
 
   rr:predicateObjectMap [
     rr:predicate skos:note;
-    rr:objectMap [ rml:reference "description" ]
+    rr:objectMap [ rml:reference "description"; rr:language "en" ]
   ];
 
   rr:predicateObjectMap [
@@ -141,7 +141,7 @@
 
   rr:predicateObjectMap [
     rr:predicate skos:prefLabel;
-    rr:objectMap [ rml:reference "label" ]
+    rr:objectMap [ rml:reference "label"; rr:language "en" ]
   ];
 
   rr:predicateObjectMap [
@@ -165,7 +165,7 @@
 
   rr:predicateObjectMap [
     rr:predicate skos:note;
-    rr:objectMap [ rml:reference "description" ]
+    rr:objectMap [ rml:reference "description"; rr:language "en" ]
   ];
 
   rr:predicateObjectMap [
@@ -190,7 +190,7 @@
 
   rr:predicateObjectMap [
     rr:predicate skos:prefLabel;
-    rr:objectMap [ rml:reference "label" ]
+    rr:objectMap [ rml:reference "label"; rr:language "en" ]
   ];
 
   rr:predicateObjectMap [
@@ -215,7 +215,7 @@
 
   rr:predicateObjectMap [
     rr:predicate skos:prefLabel;
-    rr:objectMap [ rml:reference "label" ]
+    rr:objectMap [ rml:reference "label"; rr:language "en" ]
   ];
 
   rr:predicateObjectMap [
@@ -241,7 +241,7 @@
 
   rr:predicateObjectMap [
     rr:predicate skos:prefLabel;
-    rr:objectMap [ rml:reference "label" ]
+    rr:objectMap [ rml:reference "label"; rr:language "en" ]
   ];
 
   rr:predicateObjectMap [
