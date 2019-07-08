@@ -11,8 +11,10 @@ from rdflib.util import guess_format
 
 log = logging.getLogger(__name__)
 
+DCT = Namespace('http://purl.org/dc/terms/')
 AMMO_HISCO = Namespace('http://ldf.fi/ammo/hisco/')
 AMMO = Namespace('http://ldf.fi/ammo/')
+AMMO_SCHEMA = Namespace('http://ldf.fi/schema/ammo/')
 
 
 def add_coo1980_altlabels(g: Graph):
@@ -53,10 +55,23 @@ def is_hisco_resource(resource: URIRef):
     return str(resource).startswith(str(AMMO_HISCO))
 
 
+def add_hisco_labels(g: Graph):
+    """
+    Add English labels for AMMO resources from HISCO
+    """
+    for sub, obj in list(g.subject_objects(AMMO.hisco_code)):
+        hisco_label = g.value(obj, SKOS.prefLabel)
+        g.add((sub, SKOS.prefLabel, hisco_label))
+        g.add((sub, DCT.source, URIRef('http://ldf.fi/ammo/sources/hisco')))
+
+    return g
+
+
 def main():
     argparser = argparse.ArgumentParser(description=__doc__, fromfile_prefix_chars='@')
 
-    argparser.add_argument("task", help="Task to perform", choices=['add_altlabels', 'remove_empty_literals', 'remove_unused_hisco'],)
+    argparser.add_argument("task", help="Task to perform",
+                           choices=['add_altlabels', 'remove_empty_literals', 'remove_unused_hisco', 'add_en_labels'],)
     argparser.add_argument("input", help="Input RDF file")
     argparser.add_argument("output", help="Output RDF file")
     argparser.add_argument("--loglevel", default='DEBUG', help="Logging level",
@@ -88,6 +103,11 @@ def main():
         g = remove_unused_resources(g, is_hisco_resource)
         g = remove_unused_resources(g, is_hisco_resource)
 
+    elif args.task == 'add_en_labels':
+        log.info('Adding English labels from HISCO')
+        g = add_hisco_labels(g)
+
+    g.bind('dct', DCT)
     g.bind('skos', SKOS)
     g.bind('ammo', AMMO)
     g.bind('hisco', AMMO_HISCO)
