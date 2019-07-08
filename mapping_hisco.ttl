@@ -10,7 +10,7 @@
 
 @base <http://ldf.fi/ammo/conversion/> .
 
-<TriplesMap1> a rr:TriplesMap;
+<HiscoMap1> a rr:TriplesMap;
 
   rml:logicalSource [
     rml:source "data/hisco_1.csv";
@@ -40,7 +40,7 @@
   .
 
 
-<TriplesMap2> a rr:TriplesMap;
+<HiscoMap2> a rr:TriplesMap;
 
   rml:logicalSource [
     rml:source "data/hisco_2.csv";
@@ -61,7 +61,7 @@
   rr:predicateObjectMap [
     rr:predicate skos:broader;
     rr:objectMap [
-      rr:parentTriplesMap <TriplesMap1>;
+      rr:parentTriplesMap <HiscoMap1>;
       rr:joinCondition [
         rr:child "hisco_1_id";
         rr:parent "hisco_1_id";
@@ -81,7 +81,7 @@
   .
 
 
-<TriplesMap3> a rr:TriplesMap;
+<HiscoMap3> a rr:TriplesMap;
 
   rml:logicalSource [
     rml:source "data/hisco_3.csv";
@@ -102,7 +102,7 @@
   rr:predicateObjectMap [
     rr:predicate skos:broader;
     rr:objectMap [
-      rr:parentTriplesMap <TriplesMap2>;
+      rr:parentTriplesMap <HiscoMap2>;
       rr:joinCondition [
         rr:child "hisco_1_id";
         rr:parent "hisco_1_id";
@@ -126,7 +126,7 @@
   .
 
 
-<TriplesMap45> a rr:TriplesMap;
+<HiscoMap45> a rr:TriplesMap;
 
   rml:logicalSource [
     rml:source "data/hisco_45.csv";
@@ -147,7 +147,7 @@
   rr:predicateObjectMap [
     rr:predicate skos:broader;
     rr:objectMap [
-      rr:parentTriplesMap <TriplesMap3>;
+      rr:parentTriplesMap <HiscoMap3>;
       rr:joinCondition [
         rr:child "hisco_1_id";
         rr:parent "hisco_1_id";
@@ -175,7 +175,7 @@
   .
 
 
-<TriplesMapStatus> a rr:TriplesMap;
+<HiscoMapStatus> a rr:TriplesMap;
 
   rml:logicalSource [
     rml:source "data/hisco_status.csv";
@@ -200,7 +200,7 @@
   .
 
 
-<TriplesMapRelation> a rr:TriplesMap;
+<HiscoMapRelation> a rr:TriplesMap;
 
   rml:logicalSource [
     rml:source "data/hisco_relation.csv";
@@ -226,7 +226,7 @@
 
 
 
-<TriplesMapProduct> a rr:TriplesMap;
+<HiscoMapProduct> a rr:TriplesMap;
 
   rml:logicalSource [
     rml:source "data/hisco_product.csv";

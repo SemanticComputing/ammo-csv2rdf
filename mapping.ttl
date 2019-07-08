@@ -8,12 +8,12 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 
-@base <http://example.com/base/> .
+@base <http://ldf.fi/ammo/conversion/> .
 
 <TriplesMap1> a rr:TriplesMap;
 
   rml:logicalSource [
-    rml:source "data/ammo.csv";
+    rml:source "output/ammo.csv";
     rml:referenceFormulation ql:CSV
   ];
 
@@ -21,17 +21,17 @@
 
   rr:predicateObjectMap [
     rr:predicate skos:prefLabel;
-    rr:objectMap [ rml:reference "main_name" ]
+    rr:objectMap [ rml:reference "main_name"; rr:language "fi" ]
   ];
 
   rr:predicateObjectMap [
     rr:predicate skos:altLabel;
-    rr:objectMap [ rml:reference "secondary_name" ]
+    rr:objectMap [ rml:reference "secondary_name"; rr:language "fi" ]
   ];
 
   rr:predicateObjectMap [
     rr:predicate :coo1980_code;
-    rr:objectMap [ rr:template "http://ldf.fi/ammo/coo1980#{111}"]
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/coo1980/{111}"]
   ];
 
   rr:predicateObjectMap [
@@ -41,22 +41,32 @@
 
   rr:predicateObjectMap [
     rr:predicate :hisco_relation;
-    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/relation/{RELATION}"]
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/relation_{RELATION}"]
   ];
 
   rr:predicateObjectMap [
     rr:predicate :hisco_status;
-    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/status/{STATUS}"]
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/status_{STATUS}"]
   ];
 
   rr:predicateObjectMap [
     rr:predicate :hisco_product;
-    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/product/{PRODUCT}"]
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/product_{PRODUCT}"]
   ];
 
   rr:predicateObjectMap [
     rr:predicate :hisclass;
-    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass12/{HISCLASS 2}"]
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass12_{HISCLASS_12}"]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate :hisclass;
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass7_{HISCLASS_7}"]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate :hisclass;
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass5_{HISCLASS_5}"]
   ];
 
   rr:predicateObjectMap [

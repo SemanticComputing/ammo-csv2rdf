@@ -17,7 +17,7 @@ AMMO = Namespace('http://ldf.fi/ammo/')
 
 def add_coo1980_altlabels(g: Graph):
     for coo in g.subjects(RDF.type, SKOS.Concept):
-        local_id = str(coo).split('#')[-1]
+        local_id = str(coo).split('/')[-1]
 
         if local_id == '6_7':
             local_id = '6/7'
