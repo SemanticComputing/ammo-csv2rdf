@@ -61,8 +61,11 @@ def add_hisco_labels(g: Graph):
     """
     for sub, obj in list(g.subject_objects(AMMO.hisco_code)):
         hisco_label = g.value(obj, SKOS.prefLabel)
-        g.add((sub, SKOS.prefLabel, hisco_label))
-        g.add((sub, DCT.source, URIRef('http://ldf.fi/ammo/sources/hisco')))
+        if hisco_label:
+            g.add((sub, SKOS.prefLabel, hisco_label))
+            g.add((sub, DCT.source, URIRef('http://ldf.fi/ammo/sources/hisco')))
+        else:
+            log.info('No prefLabel found for resource %s' % obj)
 
     return g
 
