@@ -1,6 +1,8 @@
 # AMMO CSV-RDF conversion.
 
-Requires [rmlmapper-java](https://github.com/RMLio/rmlmapper-java).
+See [AMMO data repository](https://github.com/SemanticComputing/ammo-data), for more information about AMMO ontology and references.
+
+RDF conversion requires [rmlmapper-java](https://github.com/RMLio/rmlmapper-java).
 
 Run the conversion with environment variable `RML` set:
 ```
