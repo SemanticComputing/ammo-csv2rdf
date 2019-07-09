@@ -70,11 +70,22 @@ def add_hisco_labels(g: Graph):
     return g
 
 
+def get_localnames(g: Graph, prop: URIRef):
+    for sub, obj in list(g.subject_objects(prop)):
+        if str(obj).startswith('file://'):
+            label = str(obj).split('/')[-1]
+            g.remove((sub, prop, obj))
+            g.add((sub, prop, Literal(label, lang="en")))
+
+    return g
+
+
 def main():
     argparser = argparse.ArgumentParser(description=__doc__, fromfile_prefix_chars='@')
 
     argparser.add_argument("task", help="Task to perform",
-                           choices=['add_altlabels', 'remove_empty_literals', 'remove_unused_hisco', 'add_en_labels'],)
+                           choices=['add_altlabels', 'remove_empty_literals', 'remove_unused_hisco', 'add_en_labels',
+                                    'get_localnames'],)
     argparser.add_argument("input", help="Input RDF file")
     argparser.add_argument("output", help="Output RDF file")
     argparser.add_argument("--loglevel", default='DEBUG', help="Logging level",
@@ -109,6 +120,10 @@ def main():
     elif args.task == 'add_en_labels':
         log.info('Adding English labels from HISCO')
         g = add_hisco_labels(g)
+
+    elif args.task == 'get_localnames':
+        log.info('Map skos:prefLabel URI values to literals')
+        g = get_localnames(g, SKOS.prefLabel)
 
     g.bind('dct', DCT)
     g.bind('skos', SKOS)

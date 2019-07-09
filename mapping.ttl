@@ -20,8 +20,20 @@
   rr:subjectMap [ rr:template "http://ldf.fi/ammo/{uri}"; rr:termType rr:IRI; ];
 
   rr:predicateObjectMap [
-    rr:predicate skos:prefLabel;
+    rr:predicate skos:prefLabel ;
     rr:objectMap [ rml:reference "main_name"; rr:language "fi" ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:prefLabel ;
+    rr:objectMap [
+      rr:parentTriplesMap <TriplesMapKDB> ;
+      rr:language "en" ;
+      rr:joinCondition [
+        rr:child "main_name" ;
+        rr:parent "TITLE" ;
+      ];
+    ];
   ];
 
   rr:predicateObjectMap [
@@ -140,4 +152,16 @@ WHERE {
 
   ];
   rr:subjectMap [ rml:reference "uri.value" ];
+  .
+
+
+
+<TriplesMapKDB> a rr:TriplesMap;
+
+  rml:logicalSource [
+    rml:source "data/KDB1.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [ rml:reference "English translation" ];
   .
