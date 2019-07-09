@@ -7,6 +7,7 @@
 @prefix sd : <http://www.w3.org/ns/sparql-service-description#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix ammo-s: <http://ldf.fi/schema/ammo/> .
 
 @base <http://ldf.fi/ammo/conversion/> .
 
@@ -39,6 +40,18 @@
   rr:predicateObjectMap [
     rr:predicate skos:altLabel;
     rr:objectMap [ rml:reference "secondary_name"; rr:language "fi" ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:prefLabel ;
+    rr:objectMap [
+      rr:parentTriplesMap <TriplesMapKDB> ;
+      rr:language "en" ;
+      rr:joinCondition [
+        rr:child "secondary_name" ;
+        rr:parent "TITLE" ;
+      ];
+    ];
   ];
 
   rr:predicateObjectMap [
@@ -83,7 +96,7 @@
 
   rr:predicateObjectMap [
     rr:predicate rdf:type ;
-    rr:object skos:Concept ;
+    rr:object ammo-s:Concept ;
   ];
 
   rr:predicateObjectMap [

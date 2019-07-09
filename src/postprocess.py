@@ -110,6 +110,7 @@ def main():
     elif args.task == 'remove_empty_literals':
         log.info('Removing empty altLabels')
         g = remove_empty_literals(g, SKOS.altLabel)
+        g = remove_empty_literals(g, SKOS.prefLabel)
 
     elif args.task == 'remove_unused_hisco':
         log.info('Removing unused HISCO resources')
@@ -128,6 +129,7 @@ def main():
     g.bind('dct', DCT)
     g.bind('skos', SKOS)
     g.bind('ammo', AMMO)
+    g.bind('ammo-s', AMMO_SCHEMA)
     g.bind('hisco', AMMO_HISCO)
     g.serialize(args.output, format=guess_format(args.output))
 
