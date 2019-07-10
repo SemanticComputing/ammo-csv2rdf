@@ -15,6 +15,7 @@ DCT = Namespace('http://purl.org/dc/terms/')
 AMMO_HISCO = Namespace('http://ldf.fi/ammo/hisco/')
 AMMO = Namespace('http://ldf.fi/ammo/')
 AMMO_SCHEMA = Namespace('http://ldf.fi/schema/ammo/')
+BIOC = Namespace('http://ldf.fi/schema/bioc/')
 
 
 def add_coo1980_altlabels(g: Graph):
@@ -126,11 +127,12 @@ def main():
         log.info('Map skos:prefLabel URI values to literals')
         g = get_localnames(g, SKOS.prefLabel)
 
-    g.bind('dct', DCT)
-    g.bind('skos', SKOS)
     g.bind('ammo', AMMO)
     g.bind('ammo-s', AMMO_SCHEMA)
+    g.bind('bio-crm', BIOC)
+    g.bind('dct', DCT)
     g.bind('hisco', AMMO_HISCO)
+    g.bind('skos', SKOS)
     g.serialize(args.output, format=guess_format(args.output))
 
 
