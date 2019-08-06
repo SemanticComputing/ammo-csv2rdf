@@ -82,17 +82,17 @@
 
   rr:predicateObjectMap [
     rr:predicate :hisclass;
-    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass12_{HISCLASS_12}"]
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass12/{HISCLASS_12}"]
   ];
 
   rr:predicateObjectMap [
     rr:predicate :hisclass;
-    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass7_{HISCLASS_7}"]
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass7/{HISCLASS_7}"]
   ];
 
   rr:predicateObjectMap [
     rr:predicate :hisclass;
-    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass5_{HISCLASS_5}"]
+    rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass5/{HISCLASS_5}"]
   ];
 
   rr:predicateObjectMap [
