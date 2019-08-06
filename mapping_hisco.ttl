@@ -129,7 +129,7 @@
 <HiscoMap45> a rr:TriplesMap;
 
   rml:logicalSource [
-    rml:source "data/hisco_45.csv";
+    rml:source "output/hisco_45.csv";
     rml:referenceFormulation ql:CSV
   ];
 
