@@ -56,12 +56,14 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate :coo1980_code;
+    # rr:predicate :coo1980_code;
+    rr:predicate skos:broadMatch ;
     rr:objectMap [ rr:template "http://ldf.fi/ammo/coo1980/{111}"]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate :hisco_code;
+    # rr:predicate :hisco_code;
+    rr:predicate skos:broadMatch ;
     rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/{HISCO}"]
   ];
 
