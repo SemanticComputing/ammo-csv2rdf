@@ -68,32 +68,32 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate :hisco_relation;
+    rr:predicate ammo-s:hisco_relation;
     rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/relation_{RELATION}"]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate :hisco_status;
+    rr:predicate ammo-s:hisco_status;
     rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/status_{STATUS}"]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate :hisco_product;
+    rr:predicate ammo-s:hisco_product;
     rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/product_{PRODUCT}"]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate :hisclass;
+    rr:predicate ammo-s:hisclass12;
     rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass12/{HISCLASS_12}"]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate :hisclass;
+    rr:predicate ammo-s:hisclass7;
     rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass7/{HISCLASS_7}"]
   ];
 
   rr:predicateObjectMap [
-    rr:predicate :hisclass;
+    rr:predicate ammo-s:hisclass5;
     rr:objectMap [ rr:template "http://ldf.fi/ammo/hisco/hisclass5/{HISCLASS_5}"]
   ];
 
