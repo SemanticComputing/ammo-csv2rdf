@@ -2,12 +2,14 @@
 
 See [AMMO data repository](https://github.com/SemanticComputing/ammo-data), for more information about AMMO ontology and references.
 
-RDF conversion requires [rmlmapper-java](https://github.com/RMLio/rmlmapper-java).
+RDF conversion uses [rmlmapper-java](https://github.com/RMLio/rmlmapper-java).
 
-Run the conversion with environment variable `RML` set:
-```
-RML="path to rmlmapper-java" ./process.sh
-```
+## Build RML-mapper
+`docker build https://github.com/RMLio/rmlmapper-java.git\#v4.4.2:. -t rmlmapper`
+
+
+## Run the conversion process
+`./process.sh`
 
 Input data required:
 - AMMO spreadsheet _(data/ammo.csv)_ as CSV

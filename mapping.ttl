@@ -31,29 +31,30 @@
     rr:objectMap [ rml:reference "secondary_name"; rr:language "fi" ]
   ];
 
-  rr:predicateObjectMap [
-    rr:predicate skos:prefLabel ;
-    rr:objectMap [
-      rr:parentTriplesMap <TriplesMapKDB> ;
-      rr:language "en" ;
-      rr:joinCondition [
-        rr:child "main_name" ;
-        rr:parent "TITLE" ;
-      ];
-    ];
-  ];
-
-  rr:predicateObjectMap [
-    rr:predicate skos:prefLabel ;
-    rr:objectMap [
-      rr:parentTriplesMap <TriplesMapKDB> ;
-      rr:language "en" ;
-      rr:joinCondition [
-        rr:child "secondary_name" ;
-        rr:parent "TITLE" ;
-      ];
-    ];
-  ];
+  # TODO: Fix KDB mapping
+  # rr:predicateObjectMap [
+  #   rr:predicate skos:prefLabel ;
+  #   rr:objectMap [
+  #     rr:parentTriplesMap <TriplesMapKDB> ;
+  #     rr:language "en" ;
+  #     rr:joinCondition [
+  #       rr:child "main_name" ;
+  #       rr:parent "TITLE" ;
+  #     ];
+  #   ];
+  # ];
+  #
+  # rr:predicateObjectMap [
+  #   rr:predicate skos:prefLabel ;
+  #   rr:objectMap [
+  #     rr:parentTriplesMap <TriplesMapKDB> ;
+  #     rr:language "en" ;
+  #     rr:joinCondition [
+  #       rr:child "secondary_name" ;
+  #       rr:parent "TITLE" ;
+  #     ];
+  #   ];
+  # ];
 
   rr:predicateObjectMap [
     # rr:predicate :coo1980_code;
@@ -177,12 +178,12 @@ WHERE {
 
 
 
-<TriplesMapKDB> a rr:TriplesMap;
-
-  rml:logicalSource [
-    rml:source "data/KDB1.csv";
-    rml:referenceFormulation ql:CSV
-  ];
-
-  rr:subjectMap [ rml:reference "English translation" ];
-  .
+# <TriplesMapKDB> a rr:TriplesMapXXXXXX;
+#
+#   rml:logicalSource [
+#     rml:source "data/KDB1.csv";
+#     rml:referenceFormulation ql:CSV
+#   ];
+#
+#   rr:subjectMap [ rml:reference "English translation" ];
+#   .
