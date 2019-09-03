@@ -1,0 +1,80 @@
+@prefix ammo: <http://ldf.fi/ammo/> .
+@prefix ammo-s: <http://ldf.fi/schema/ammo/> .
+@prefix coo1980: <http://ldf.fi/ammo/coo1980/> .
+@prefix coo1980_status: <http://ldf.fi/ammo/coo1980status#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix hisco: <http://ldf.fi/ammo/hisco/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+coo1980:conceptscheme a skos:ConceptScheme ;
+  dct:source <http://ldf.fi/ammo/sources/coo1980> ;
+  skos:hasTopConcept coo1980:0 ,
+    coo1980:1 ,
+    coo1980:2 ,
+    coo1980:3 ,
+    coo1980:4 ,
+    coo1980:5 ,
+    coo1980:6_7 ,
+    coo1980:8 ,
+    coo1980:9 .
+
+coo1980_status:conceptscheme a skos:ConceptScheme ;
+  skos:hasTopConcept coo1980:status_1 ,
+    coo1980:status_2 ,
+    coo1980:status_3 ,
+    coo1980:status_4 ,
+    coo1980:status_5 .
+
+hisco:conceptscheme a skos:ConceptScheme ;
+  skos:hasTopConcept hisco:0 ,
+    hisco:1 ,
+    hisco:2 ,
+    hisco:3 ,
+    hisco:4 ,
+    hisco:5 ,
+    hisco:6 ,
+    hisco:7 ,
+    hisco:8 ,
+    hisco:9 ,
+    <http://ldf.fi/ammo/hisco/-1> .
+
+coo1980:0 skos:topConceptOf coo1980:conceptscheme .
+coo1980:1 skos:topConceptOf coo1980:conceptscheme .
+coo1980:2 skos:topConceptOf coo1980:conceptscheme .
+coo1980:3 skos:topConceptOf coo1980:conceptscheme .
+coo1980:4 skos:topConceptOf coo1980:conceptscheme .
+coo1980:5 skos:topConceptOf coo1980:conceptscheme .
+coo1980:6_7 skos:topConceptOf coo1980:conceptscheme .
+coo1980:8 skos:topConceptOf coo1980:conceptscheme .
+coo1980:9 skos:topConceptOf coo1980:conceptscheme .
+
+coo1980:status_1 skos:topConceptOf coo1980_status:conceptscheme .
+coo1980:status_2 skos:topConceptOf coo1980_status:conceptscheme .
+coo1980:status_3 skos:topConceptOf coo1980_status:conceptscheme .
+coo1980:status_4 skos:topConceptOf coo1980_status:conceptscheme .
+coo1980:status_5 skos:topConceptOf coo1980_status:conceptscheme .
+
+hisco:0 skos:topConceptOf hisco:conceptscheme .
+hisco:1 skos:topConceptOf hisco:conceptscheme .
+hisco:2 skos:topConceptOf hisco:conceptscheme .
+hisco:3 skos:topConceptOf hisco:conceptscheme .
+hisco:4 skos:topConceptOf hisco:conceptscheme .
+hisco:5 skos:topConceptOf hisco:conceptscheme .
+hisco:6 skos:topConceptOf hisco:conceptscheme .
+hisco:7 skos:topConceptOf hisco:conceptscheme .
+hisco:8 skos:topConceptOf hisco:conceptscheme .
+hisco:9 skos:topConceptOf hisco:conceptscheme .
+<http://ldf.fi/ammo/hisco/-1> skos:topConceptOf hisco:conceptscheme .
+
+ammo:hisco a skos:Collection ;
+  skos:prefLabel "HISCO concepts" ;
+  dct:source <http://ldf.fi/ammo/sources/hisco> .
+
+ammo:coo1980 a skos:Collection ;
+  skos:prefLabel "Classification of Occupation 1980 concepts" ;
+  dct:source <http://ldf.fi/ammo/sources/hisco> .

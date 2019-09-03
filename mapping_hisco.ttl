@@ -273,3 +273,79 @@
     rr:object <http://ldf.fi/ammo/sources/hiscam> ;
   ];
   .
+
+<HiscoMapCollection1> a rr:TriplesMap;
+
+  rml:logicalSource [
+    rml:source "data/hisco_1.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [ rr:constant :hisco ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:member;
+    rr:objectMap [
+      rr:template "http://ldf.fi/ammo/hisco/{hisco_1_id}";
+      rr:termType rr:IRI;
+      rr:class skos:Concept
+    ];
+  ];
+  .
+
+<HiscoMapCollection2> a rr:TriplesMap;
+
+  rml:logicalSource [
+    rml:source "data/hisco_2.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [ rr:constant :hisco ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:member;
+    rr:objectMap [
+      rr:template "http://ldf.fi/ammo/hisco/{hisco_1_id}{hisco_2_id}";
+      rr:termType rr:IRI;
+      rr:class skos:Concept
+    ];
+  ];
+  .
+
+<HiscoMapCollection3> a rr:TriplesMap;
+
+  rml:logicalSource [
+    rml:source "data/hisco_3.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [ rr:constant :hisco ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:member;
+    rr:objectMap [
+      rr:template "http://ldf.fi/ammo/hisco/{hisco_1_id}{hisco_2_id}{hisco_3_id}";
+      rr:termType rr:IRI;
+      rr:class skos:Concept
+    ];
+  ];
+  .
+
+<HiscoMapCollection45> a rr:TriplesMap;
+
+  rml:logicalSource [
+    rml:source "data/hisco_45.csv";
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [ rr:constant :hisco ];
+
+  rr:predicateObjectMap [
+    rr:predicate skos:member;
+    rr:objectMap [
+      rr:template "http://ldf.fi/ammo/hisco/{hisco_1_id}{hisco_2_id}{hisco_3_id}{hisco_45_id}";
+      rr:termType rr:IRI;
+      rr:class skos:Concept
+    ];
+  ];
+  .

@@ -32,6 +32,15 @@ def add_coo1980_altlabels(g: Graph):
     return g
 
 
+def add_coo1980_members(g: Graph):
+    for coo in g.subjects(RDF.type, SKOS.Concept):
+        g.add((AMMO.coo1980, SKOS.member, coo))
+
+        log.debug('Annotating COO1980 collection memberships to URI %s' % (coo))
+
+    return g
+
+
 def remove_empty_literals(g: Graph, prop: URIRef):
     for resource, value in list(g.subject_objects(prop)):
         if str(value) == '':
@@ -44,10 +53,13 @@ def remove_empty_literals(g: Graph, prop: URIRef):
 def remove_unused_resources(g: Graph, qualifier: types.FunctionType):
     log.info('Removing unused resources with qualifier %s' % qualifier)
 
-    for resource in list(g.subjects(None, None)):
-        if not list(g.subject_predicates(resource)) and qualifier(resource):
+    for resource in list(g.objects(AMMO.hisco, SKOS.member)):
+        if not list(g.subjects(AMMO.hisco_code, resource)):
             log.debug('Removing resource %s' % resource)
             g.remove((resource, None, None))
+            g.remove((None, SKOS.member, resource))
+        else:
+            log.debug('foo %s %s' % (resource, len(list(g.subjects(AMMO.hisco_code, resource)))))
 
     return g
 
@@ -85,8 +97,8 @@ def main():
     argparser = argparse.ArgumentParser(description=__doc__, fromfile_prefix_chars='@')
 
     argparser.add_argument("task", help="Task to perform",
-                           choices=['add_altlabels', 'remove_empty_literals', 'remove_unused_hisco', 'add_en_labels',
-                                    'get_localnames'],)
+                           choices=['add_altlabels', 'add_coo1980_members', 'remove_empty_literals',
+                                    'remove_unused_hisco', 'add_en_labels', 'get_localnames'],)
     argparser.add_argument("input", help="Input RDF file")
     argparser.add_argument("output", help="Output RDF file")
     argparser.add_argument("--loglevel", default='DEBUG', help="Logging level",
@@ -107,6 +119,10 @@ def main():
     if args.task == 'add_altlabels':
         log.info('Adding altLabels to COO1980')
         g = add_coo1980_altlabels(g)
+
+    if args.task == 'add_coo1980_members':
+        log.info('Adding altLabels to COO1980')
+        g = add_coo1980_members(g)
 
     elif args.task == 'remove_empty_literals':
         log.info('Removing empty altLabels')
