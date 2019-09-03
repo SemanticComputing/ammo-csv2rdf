@@ -1,0 +1,30 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix : <http://ldf.fi/ammo/> .
+@prefix ammo-s: <http://ldf.fi/schema/ammo/> .
+@prefix bio-crm: <http://ldf.fi/schema/bioc/> .
+@prefix coo1980: <http://ldf.fi/ammo/coo1980/> .
+@prefix coo1980_status: <http://ldf.fi/ammo/coo1980status#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix hisco: <http://ldf.fi/ammo/hisco/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:filosofian-kandidaatti
+    skos:altLabel "FK"@fi .
+
+:filosofian-maisteri
+    skos:altLabel "FM"@fi .
+
+:filosofian-tohtori
+    skos:altLabel "FT"@fi .
+
+:diplomi-insinoori
+    skos:altLabel "DI"@fi .
+
