@@ -21,7 +21,9 @@ skosify output/_coo1980.ttl -o output/_coo1980_skosified.ttl
 
 python src/postprocess.py get_localnames output/_ammo.ttl output/_ammo_2.ttl --logfile output/logs/postprocess.log
 python src/postprocess.py remove_empty_literals output/_ammo_2.ttl output/_ammo_3.ttl --logfile output/logs/postprocess.log
-cat output/_ammo_3.ttl output/_coo1980_skosified.ttl output/_hisco.ttl data/hisco_additional.ttl input/collections_and_schemes.ttl input/ammo_additions.ttl | rapper - "http://ldf.fi/ammo/" -i turtle -o turtle > output/_ammo_combined.ttl
+python src/postprocess.py process_kdb_labels output/_ammo_3.ttl output/_ammo_4.ttl --logfile output/logs/postprocess.log
+
+cat output/_ammo_4.ttl output/_coo1980_skosified.ttl output/_hisco.ttl data/hisco_additional.ttl input/collections_and_schemes.ttl input/ammo_additions.ttl | rapper - "http://ldf.fi/ammo/" -i turtle -o turtle > output/_ammo_combined.ttl
 
 # python src/postprocess.py add_en_labels output/_ammo_combined.ttl output/_ammo_combined_2.ttl --logfile output/logs/postprocess.log
 python src/postprocess.py remove_unused_hisco output/_ammo_combined.ttl output/_ammo_.ttl --logfile output/logs/postprocess.log

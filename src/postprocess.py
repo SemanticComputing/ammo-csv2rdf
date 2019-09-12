@@ -93,12 +93,46 @@ def get_localnames(g: Graph, prop: URIRef):
     return g
 
 
+def process_kdb_labels(g: Graph):
+    """
+    Add English labels for AMMO resources transformed from KDB1
+    """
+    TEMP = Namespace('http://ldf.fi/temp/')
+
+    for sub, obj in list(g.subject_objects(TEMP.kdb_link_preflabel)):
+        kdb_label = g.value(obj, TEMP.label)
+        if kdb_label:
+            g.add((sub, SKOS.prefLabel, kdb_label))
+            # g.add((sub, DCT.source, URIRef('http://ldf.fi/ammo/sources/kdb')))
+            # g.remove((obj, SKOS.prefLabel, kdb_label))
+            log.debug('Adding prefLabel "{lbl}" for resource {uri}'.format(lbl=kdb_label, uri=sub))
+        else:
+            log.info('No KDB1 prefLabel found for resource %s' % obj)
+
+        g.remove((sub, TEMP.kdb_link_preflabel, obj))
+
+    for sub, obj in list(g.subject_objects(URIRef('http://ldf.fi/temp/kdb_link_altlabel'))):
+        kdb_label = g.value(obj, TEMP.label)
+        if kdb_label:
+            g.add((sub, SKOS.altLabel, kdb_label))
+            log.debug('Adding altLabel "{lbl}" for resource {uri}'.format(lbl=kdb_label, uri=sub))
+        else:
+            log.info('No KDB1 altLabel found for resource %s' % obj)
+
+        g.remove((sub, TEMP.kdb_link_altlabel, obj))
+
+    for sub, pre, obj in list(g.triples((None, TEMP.label, None))):
+        g.remove((sub, pre, obj))
+
+    return g
+
+
 def main():
     argparser = argparse.ArgumentParser(description=__doc__, fromfile_prefix_chars='@')
 
     argparser.add_argument("task", help="Task to perform",
                            choices=['add_altlabels', 'add_coo1980_members', 'remove_empty_literals',
-                                    'remove_unused_hisco', 'add_en_labels', 'get_localnames'],)
+                                    'remove_unused_hisco', 'add_en_labels', 'get_localnames', 'process_kdb_labels'],)
     argparser.add_argument("input", help="Input RDF file")
     argparser.add_argument("output", help="Output RDF file")
     argparser.add_argument("--loglevel", default='DEBUG', help="Logging level",
@@ -142,6 +176,10 @@ def main():
     elif args.task == 'get_localnames':
         log.info('Map skos:prefLabel URI values to literals')
         g = get_localnames(g, SKOS.prefLabel)
+
+    elif args.task == 'process_kdb_labels':
+        log.info('Adding English labels from KDB1')
+        g = process_kdb_labels(g)
 
     g.bind('ammo', AMMO)
     g.bind('ammo-s', AMMO_SCHEMA)
