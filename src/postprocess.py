@@ -50,21 +50,19 @@ def remove_empty_literals(g: Graph, prop: URIRef):
     return g
 
 
-def remove_unused_resources(g: Graph, qualifier: types.FunctionType):
-    log.info('Removing unused resources with qualifier %s' % qualifier)
+def remove_unused_resources(g: Graph):
+    log.info('Removing unused HISCO resources')
 
     for resource in list(g.objects(AMMO.hisco, SKOS.member)):
-        if not list(g.subjects(AMMO.hisco_code, resource)):
+        if not list(g.subjects(AMMO.hisco_code, resource)) and not list(g.subjects(SKOS.broader, resource)):
             log.debug('Removing resource %s' % resource)
             g.remove((resource, None, None))
             g.remove((None, SKOS.member, resource))
-        else:
-            log.debug('foo %s %s' % (resource, len(list(g.subjects(AMMO.hisco_code, resource)))))
 
     return g
 
 
-def is_hisco_resource(resource: URIRef):
+def _is_hisco_resource(resource: URIRef):
     return str(resource).startswith(str(AMMO_HISCO))
 
 
@@ -165,9 +163,9 @@ def main():
 
     elif args.task == 'remove_unused_hisco':
         log.info('Removing unused HISCO resources')
-        g = remove_unused_resources(g, is_hisco_resource)
-        g = remove_unused_resources(g, is_hisco_resource)
-        g = remove_unused_resources(g, is_hisco_resource)
+        g = remove_unused_resources(g)
+        g = remove_unused_resources(g)
+        g = remove_unused_resources(g)
 
     elif args.task == 'add_en_labels':
         log.info('Adding English labels from HISCO')
