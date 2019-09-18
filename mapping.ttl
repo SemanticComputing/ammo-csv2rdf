@@ -102,7 +102,7 @@
 
   rr:predicateObjectMap [
     rr:predicate rdf:type ;
-    rr:object bio-crm:Occupation ;
+    rr:object ammo-s:Concept ;
   ];
 
   rr:predicateObjectMap [
@@ -117,7 +117,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate skos:related ;
+    rr:predicate skos:relatedMatch ;
     rr:objectMap [
       rr:parentTriplesMap <TriplesMapFinto> ;
       rr:joinCondition [
@@ -128,7 +128,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate skos:related ;
+    rr:predicate skos:relatedMatch ;
     rr:objectMap [
       rr:parentTriplesMap <TriplesMapFinto> ;
       rr:joinCondition [
